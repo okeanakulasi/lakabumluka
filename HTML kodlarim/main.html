@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TEKLIF??</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    img {
+      width: 200px;
+      display: none; /* Başlangıçta gizli */
+    }
+    h2 {
+      margin-top: 20px;
+      display: none; /* Başlangıçta gizli */
+    }
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+      height: 100px;
+      width: 300px;
+      display: none; /* Başlangıçta gizli */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+    }
+    #He {
+      background-color: green;
+      color: white;
+      left: 0;
+      top: 0;
+    }
+    #Yox {
+      background-color: red;
+      color: white;
+      left: 120px;
+      top: 0;
+    }
+    #login-form {
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Şifre giriş formu -->
+  <div id="login-form">
+    <h2>Sifre sevgili olma tariximizdi </h2>
+    <input type="password" id="password" placeholder="Sevgili olma tariximiz">
+    <button onclick="checkPassword()">Ya Allah insallah isleyer</button>
+  </div>
+
+  <!-- Gizli içerik -->
+  <img src="Men.jpg" alt="PLEAASEE" id="image">
+  <h2 id="question">Evlenek?</h2>
+  <div class="buttons">
+    <button id="He" onclick="evetTiklandi()">He</button>
+    <button id="Yox" onmouseover="kac()">Yox</button>
+  </div>
+
+  <script>
+    // Şifre kontrol fonksiyonu
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+      const correctPassword = "07.10.2024"; // Buraya istediğiniz şifreyi yazın
+
+      if (password === correctPassword) {
+        // Şifre doğruysa, şifre formunu gizle ve içerikleri göster
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("image").style.display = "block";
+        document.getElementById("question").style.display = "block";
+        document.querySelector(".buttons").style.display = "block";
+      } else {
+        // Yanlış şifre girildiğinde uyarı göster
+        alert("Sevgili olma tariximizi bilmirsen az?? (aralara noqte qoy)");
+      }
+    }
+
+    // "He" butonuna tıklanınca sayfa yenileniyor
+    function evetTiklandi() {
+      location.reload();
+    }
+
+    // "Yox" butonunun hareket etmesi
+    function kac() {
+      const btn = document.getElementById("Yox");
+      const container = document.querySelector(".buttons");
+
+      const containerRect = container.getBoundingClientRect();
+      const btnWidth = btn.offsetWidth;
+      const btnHeight = btn.offsetHeight;
+
+      // Maksimum X ve Y koordinatları, butonun dışarı çıkmaması için
+      const maxX = container.clientWidth - btnWidth;
+      const maxY = container.clientHeight - btnHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+    }
+  </script>
+</body>
+</html>
